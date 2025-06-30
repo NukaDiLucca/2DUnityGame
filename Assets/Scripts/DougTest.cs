@@ -11,6 +11,6 @@ public class DougTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Hi");
+        print("Hello World!");
     }
 }
