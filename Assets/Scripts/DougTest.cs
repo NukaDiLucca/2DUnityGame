@@ -1,16 +1,31 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class DougTest : MonoBehaviour
+public class CardBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private RectTransform rectTransform;
+    private Image image;
+
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        
+        image.color = new Color32(255, 255, 255, 170);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDrag(PointerEventData eventData)
     {
-        print("Hello World!");
+        rectTransform.anchoredPosition += eventData.delta;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        image.color = new Color(255, 255, 255, 255);
+    }
+    void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        image = GetComponent<Image>();
     }
 }
